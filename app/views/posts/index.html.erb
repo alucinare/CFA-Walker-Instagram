@@ -1,0 +1,31 @@
+<h1>Greetings and salutations. This is the index. </h1>
+
+<p><%= link_to 'New', new_post_path %></p>
+
+<p><%= new_post_path %></p>
+
+<p><%= link_to 'New_url', new_post_url %></p>
+
+<p><% newPostUrl = new_post_url %></p>
+
+<p><%= newPostUrl.inspect %></p>
+
+<!-- These are helpers  -->
+<!-- replace photo/s with post/s
+    photos_path returns /photos
+    new_photo_path returns /photos/new
+    edit_photo_path(:id) returns /photos/:id/edit (for instance, edit_photo_path(10) returns /photos/10/edit)
+    photo_path(:id) returns /photos/:id (for instance, photo_path(10) returns /photos/10)
+  along with any of the above minus _path (posts/new) with the addition of _url which adds the host, port, and path prefix
+that looks like this: http://localhost:3000 + posts/new-->
+
+<p><%= @post.inspect %></p>
+
+<h2>This is the post_all object </h2>
+<h3><%= @post_all %></h3>
+
+<% @post_all.each do |post| %>
+<%= post.image %>
+<%= post.caption %>
+<br>
+<% end %>
