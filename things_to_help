@@ -1,0 +1,3 @@
+This was Ben's way to print out the pictures, though it didn't work for me and only errored and when I played around with it, printed out a text of something related to the pictures.
+
+// <!-- This is another way to do it: image_tag (post.image.url, :medium). But I couldn't get it to work. If I put the brackets around the medium it would error so i put it as it is and it prints out some name relatedto the image. -->
