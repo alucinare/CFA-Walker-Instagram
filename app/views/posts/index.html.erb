@@ -31,7 +31,12 @@ that looks like this: http://localhost:3000 + posts/new-->
   <div class="post text-center">
     <div class="post-head">
       <div class="name">
-        John Stewart
+        <!-- SELF CREATED instead of a simply string -->
+        <!-- this simply displays the current_user and not the user to whom the post is associated. -->
+        <!-- <%= current_user.user_name %> -->
+        <!--  this will show the posts associated with the current user-->
+        <%= post.user.user_name %>
+        <!-- I get an error because most of the post don't have a user associated with them -->
       </div>
     </div>
     <div class="image center-block">

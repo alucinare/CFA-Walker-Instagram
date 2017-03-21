@@ -12,10 +12,6 @@
 
     <%= render 'partials/nav' %>
 
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
-
-
     <div clas="container">
       <% flash.each do |name, msg| %>
       <%= content_tag :div, msg, class: [:alert, alert_for(name)] %>

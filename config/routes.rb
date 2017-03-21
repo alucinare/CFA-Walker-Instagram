@@ -1,7 +1,12 @@
 Rails.application.routes.draw do
-  devise_for :users
+  # SELF CREATE
+  # this is the line of code that guides the user to the registrations controller so it can take action on the model, just like the resources method this creates 7 possible actions that can be taken
+  devise_for :users, :controllers => { registrations: 'registrations' }
+  # DEVISE CREATE
+  # devise_for :users - this is the default setting when Devise is installed
   # I had in comment the bottom line out for the rails generate devise:install to work
   devise_for :installs
+
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
   # THIS IS THE ROUTES - it tells the request what controller to go to
@@ -11,7 +16,7 @@ Rails.application.routes.draw do
 
   resources :posts # this can route to 7 different countroller actions
 
-  # THESE ARE THEM
+  # THESE ARE the routes for resources :posts
                   #(sent from client)
 #   Prefix Verb   URI Pattern               Controller#Action
 #   root    GET    /                         posts#index
