@@ -4,10 +4,7 @@
 <!--  webpage it shows the form necessary to upload an image and-->
 <!-- and put a caption on it, all this except for the variables/symbols -->
 <!--  come from the gem file -->
-<%= simple_form_for @post do |f| %>
-  <%= f.input :image %>
-  <%= f.input :caption %>
-  <%= f.button :submit %>
-<% end %>
-
-<p><%= @post.inspect %></p>
+<div class="form-wrapper text-center">
+  <p> Please attach an image and add a caption </p>
+  <%= render 'partials/form' %>
+</div>

@@ -41,6 +41,9 @@ gem 'paperclip', '~> 5.0.0'
 #Simple Form a gem to create forms
 gem 'simple_form'
 
+# Authentication gem Devise
+gem 'devise'
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platform: :mri

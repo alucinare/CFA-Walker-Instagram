@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  devise_for :users
+  # I had in comment the bottom line out for the rails generate devise:install to work
+  devise_for :installs
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
   # THIS IS THE ROUTES - it tells the request what controller to go to

@@ -1,0 +1,23 @@
+<div class="row posts-wrapper text-center">
+  <div class="post text-center">
+    <div class="post-head">
+      <div class="name">
+        John Stewart
+      </div>
+    </div>
+    <div class="image center-block">
+      <!-- this displays the image and caption through the show method in the PostsController -->
+      <%= image_tag(@post.image, size: '500x500') %>
+    </div>
+    <p class="caption"><%= @post.caption %></p>
+  </div>
+  <li>
+    <ul>
+      <p><%= link_to "Cancel", posts_path %></p>
+    </ul>
+    <ul>
+      <!-- I'm not entirely sure why the @post is there, perhaps it's a way to make sure it goes to that particular post -->
+      <p><%= link_to "Edit", edit_post_path(@post) %></p>
+    </ul>
+  </li>
+</div>

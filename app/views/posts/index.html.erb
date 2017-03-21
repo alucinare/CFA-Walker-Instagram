@@ -1,4 +1,4 @@
-<h1>Greetings and salutations. This is the index. </h1>
+<!-- <h1>Greetings and salutations. This is the index. </h1> -->
 
 <!-- testing some things -->
 <!-- <p><%= link_to 'New', new_post_path %></p>
@@ -26,6 +26,7 @@ that looks like this: http://localhost:3000 + posts/new-->
 <h3><%= @post_all %></h3> -->
 
 <div class="row posts-wrapper">
+  <!-- this is taking the object put into post_all - ALL the posts - and cycling through them puting each in a div -->
   <% @post_all.each do |post|%>
   <div class="post text-center">
     <div class="post-head">
@@ -34,7 +35,9 @@ that looks like this: http://localhost:3000 + posts/new-->
       </div>
     </div>
     <div class="image center-block">
-      <%= image_tag(post.image, class: 'pictures', size: '500x500') %>
+      <!-- this will link the image to show the single image -->
+      <%= link_to(image_tag(post.image, size: '500x500'), post_path(post)) %>
+      <!-- changing the post_path (/posts/1) to posts_path will cause the image to link to the posts like this /posts.1-->
     </div>
     <p class="caption"><%= post.caption %></p>
     <% end %>

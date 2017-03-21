@@ -14,7 +14,7 @@
 //   align-items: center;
 //   left: 38rem;
 // }
-//
+// link_to(image_tag(post.image, size: '500x500'), post)
 // .container-fluid {
 //   margin: 1em;
 // }
@@ -26,7 +26,7 @@ body {
 .posts-wrapper {
   padding-top: 40px;
   margin: 0 auto;
-  max-width: 642px;
+  // max-width: 642px;
   width: 100%;
 }
 
