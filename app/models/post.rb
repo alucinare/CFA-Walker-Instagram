@@ -4,6 +4,8 @@ class Post < ApplicationRecord # this is a model
   validates :user_id, presence: true
   # This is telling the application that Post belongs to the user class
   belongs_to :user
+  # The dependent method means that if a post is destroyed then all comments related to that post are destroyed as well, this is the same in the user model.
+  has_many :comments, dependent: :destroy
 
   #apparently this is a way to plug up a security hole in which accessing the database is done through mass assignment
   # this may not be needed as the video was made in 2011

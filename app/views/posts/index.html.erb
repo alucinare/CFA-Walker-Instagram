@@ -1,50 +1,49 @@
-<!-- <h1>Greetings and salutations. This is the index. </h1> -->
-
-<!-- testing some things -->
-<!-- <p><%= link_to 'New', new_post_path %></p>
-
-<p><%= new_post_path %></p>
-
-<p><%= link_to 'New_url', new_post_url %></p>
-
-<p><% newPostUrl = new_post_url %></p>
-
-<p><%= newPostUrl.inspect %></p> -->
-
-<!-- These are helpers  -->
-<!-- replace photo/s with post/s
-    photos_path returns /photos
-    new_photo_path returns /photos/new
-    edit_photo_path(:id) returns /photos/:id/edit (for instance, edit_photo_path(10) returns /photos/10/edit)
-    photo_path(:id) returns /photos/:id (for instance, photo_path(10) returns /photos/10)
-  along with any of the above minus _path (posts/new) with the addition of _url which adds the host, port, and path prefix
-that looks like this: http://localhost:3000 + posts/new-->
-<!--  playing aronud-->
-<!-- <p><%= @post.inspect %></p>
-
-<h2>This is the post_all object </h2>
-<h3><%= @post_all %></h3> -->
-
 <div class="row posts-wrapper">
-  <!-- this is taking the object put into post_all - ALL the posts - and cycling through them puting each in a div -->
-  <% @post_all.each do |post|%>
-  <div class="post text-center">
-    <div class="post-head">
-      <div class="name">
-        <!-- SELF CREATED instead of a simply string -->
-        <!-- this simply displays the current_user and not the user to whom the post is associated. -->
-        <!-- <%= current_user.user_name %> -->
-        <!--  this will show the posts associated with the current user-->
-        <%= post.user.user_name %>
-        <!-- I get an error because most of the post don't have a user associated with them -->
+  <!--  this cycles through the objects in the @posts variable-->
+  <% @posts.each do |post| %>
+    <div class="post text-center">
+      <div class="post-head">
+        <div class="thumb-img">
+          <div class="name">
+            <%= post.user.user_name %>
+          </div>
+        </div>
+      </div>
+      <!--  This was in the post-head and that was causing it to be all funny-->
+      <div class="image center-block">
+        <!-- this is the original image link that Ben used, but it didn't work for me
+        <%= link_to (image_tag post.image.url(:medium), class:'imgresponsive'), post_path(post) %> -->
+        <%= link_to(image_tag(post.image, size: '500x500', class:'imgresponsive'), post_path(post)) %>
+      </div>
+      <div class="post-bottom">
+        <div class="caption">
+          <div class="user-name">
+            <%= post.user.user_name %>
+          </div>
+          <%= post.caption %>
+        </div>
+        <% if post.comments %>
+          <% post.comments.each do |comment| %>
+            <div class="comment">
+              <div class="user-name">
+                <p>User name: <%= comment.user.user_name %></p>
+              </div>
+              <div class="comment-content">
+                <p>Content: <%= comment.content %></p>
+              </div>
+              <!--  makes sure the comment is made by the user currently logged in, if so they can delete-->
+              <% if comment.user == current_user %>
+                <%= link_to "Delete", post_comment_path(post, comment), method: :delete, data: { confirm: "Are you sure?" } %>
+              <% end %>
+          <% end %>
+            </div>
+        <div class="comment-form">
+          <%= form_for [post, post.comments.new] do |f| %>
+            <%= f.text_field :content, placeholder: 'Add a comment...' %>
+          <% end %>
+        </div>
+        <% end %>
       </div>
     </div>
-    <div class="image center-block">
-      <!-- this will link the image to show the single image -->
-      <%= link_to(image_tag(post.image, size: '500x500'), post_path(post)) %>
-      <!-- changing the post_path (/posts/1) to posts_path will cause the image to link to the posts like this /posts.1-->
-    </div>
-    <p class="caption"><%= post.caption %></p>
-    <% end %>
-  </div>
+  <% end %>
 </div>

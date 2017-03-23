@@ -14,7 +14,10 @@ Rails.application.routes.draw do
   # ruby rails home page which is the root
   root 'posts#index'
 
-  resources :posts # this can route to 7 different countroller actions
+  resources :posts do# this can route to 7 different countroller actions
+    resources :comments#, only: [:index, :new, :create, :edit]
+  end
+
 
   # THESE ARE the routes for resources :posts
                   #(sent from client)

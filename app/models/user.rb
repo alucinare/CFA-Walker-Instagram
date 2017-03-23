@@ -4,7 +4,7 @@ class User < ApplicationRecord
   # has_many :post
   # I have to have added this as well
   has_many :posts, dependent: :destroy
-  
+  has_many :comments, dependent: :destroy
   # SELF CREATED
   # this is a form of validation for a user_name, it must have a min and max length
   validates :user_name, presence: true, length: { minimum: 4,

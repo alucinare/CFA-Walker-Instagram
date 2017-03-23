@@ -1,0 +1,149 @@
+#############
+INDEX OLD
+##############
+<div class="row posts-wrapper">
+  <!-- this is taking the object put into post_all - ALL the posts - and cycling through them puting each in a div -->
+  <% @posts.each do |post|%>
+  <div class="post text-center">
+    <div class="post-head">
+      <div class="name">
+        <!-- SELF CREATED instead of a simply string -->
+        <!-- this simply displays the current_user and not the user to whom the post is associated. -->
+        <!-- <%= current_user.user_name %> -->
+        <!--  this will show the posts associated with the current user-->
+        <%= post.user.user_name %>
+        <!-- I get an error because most of the post don't have a user associated with them -->
+      </div>
+    </div>
+    <div class="image center-block">
+      <!-- this will link the image to show the single image -->
+      <%= link_to(image_tag(post.image, size: '500x500'), post_path(post)) %>
+      <!-- changing the post_path (/posts/1) to posts_path will cause the image to link to the posts like this /posts.1-->
+    </div>
+    <p class="caption"><%= post.caption %></p>
+    <% end %>
+  </div>
+</div>
+
+
+
+
+<!-- <div class="row posts-wrapper">
+  <!-- this is taking the object put into post_all - ALL the posts - and cycling through them puting each in a div -->
+  <% @posts.each do |post|%>
+  <div class="post text-center">
+    <div class="post-head">
+      <div class="name">
+        <!-- SELF CREATED instead of a simply string -->
+        <!-- this simply displays the current_user and not the user to whom the post is associated. -->
+        <%= current_user.user_name %>
+         <!-- this will show the posts associated with the current user -->
+        <%= post.user.user_name %>
+        <!-- I get an error because most of the post don't have a user associated with them -->
+      </div>
+    </div>
+    <div class="image center-block">
+      <!-- this will link the image to show the single image -->
+      <%= link_to(image_tag(post.image, size: '500x500'), post_path(post)) %>
+      <!-- changing the post_path (/posts/1) to posts_path will cause the image to link to the posts like this /posts.1-->
+      <!-- this didn't work for me I'm not sure why: <%= link_to (image_tag post.image.url(:medium), class:'imgresponsive'), post_path(post) %> well, I don't remember why!-->
+    </div>
+    <p class="caption"><%= post.caption %></p>
+    <% end %>
+    <form>
+      <% if post.comments %>
+      <!--  B Walkers-->
+        <% post.comments.each do |comment| %>
+      <!-- My own -->
+      <% simple_form_for @comment, html: { class: 'form-horizontal', multipart: true } do |f| %>
+          <div class="comment">
+            <div class="user-name">
+              <%= comment.user.user_name %>
+            </div>
+            <div class="comment-content">
+              <%= comment.content %>
+              <% if comment.user == current_user %>
+                <%= link_to post_comment_path(post, comment), method: :delete, data: { confirm: "Are you sure?" } %>
+              <% end %>
+            </div>
+          </div>
+          <div class="comment-form"> -->
+            <!-- form_for is a default formm that is used by rails, it can be used instead of a gem form system  -->
+            <%= form_for [post, post.comments.new] do |f| %>
+              <%= f.text_field :content, placeholder: 'Add a comment...' %>
+            <% end %>
+          </div>
+          <% end %>
+        <% end %>
+      </form>
+    </div>
+  </div> -->
+
+
+  <!-- MY go at using form, I used simple_form though apparently that's too much hassle! I was also using bootstrap to create the input area -->
+<!-- <div class="form-group">
+    <label for="exampleInputEmail1">Comments</label>
+      <div class="form-horizontal">
+        <div class="form-group">
+          <div class="col-md-6">
+            <textarea class="form-control" rows="3" required>
+              <%= f.input :content, label: "Enter Comments Here" %>
+            </textarea>
+          </div>
+        </div>
+      </div>
+    <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Email">
+  </div>
+  <div class="form-group text-center">
+    <%= f.button :submit, class: 'btn-success' %>
+  </div>
+  <% end %>
+</form> -->
+
+##########################
+THIS IS FROM THE SHOW VIEW
+##########################
+<!-- <form>
+<%= simple_form_for @comment, html: { class: 'form-horizontal', multipart: true } do |f| %>
+  <div class="form-group">
+    <label for="exampleInputEmail1">Comments</label>
+    <div class="form-group">
+      <%= f.input :content, label: "Enter Comments Here" %>
+    </div>
+    <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Email">
+  </div>
+  <div class="form-group text-center">
+    <%= f.button :submit, class: 'btn-success' %>
+  </div>
+  <% end %>
+</form> -->
+
+##########################
+FROM INDEX
+###########################
+<!-- <h1>Greetings and salutations. This is the index. </h1> -->
+
+<!-- testing some things -->
+<!-- <p><%= link_to 'New', new_post_path %></p>
+
+<p><%= new_post_path %></p>
+
+<p><%= link_to 'New_url', new_post_url %></p>
+
+<p><% newPostUrl = new_post_url %></p>
+
+<p><%= newPostUrl.inspect %></p> -->
+
+<!-- These are helpers  -->
+<!-- replace photo/s with post/s
+    photos_path returns /photos
+    new_photo_path returns /photos/new
+    edit_photo_path(:id) returns /photos/:id/edit (for instance, edit_photo_path(10) returns /photos/10/edit)
+    photo_path(:id) returns /photos/:id (for instance, photo_path(10) returns /photos/10)
+  along with any of the above minus _path (posts/new) with the addition of _url which adds the host, port, and path prefix
+that looks like this: http://localhost:3000 + posts/new-->
+<!--  playing aronud-->
+<!-- <p><%= @post.inspect %></p>
+
+<h2>This is the post_all object </h2>
+<h3><%= @post_all %></h3> -->
