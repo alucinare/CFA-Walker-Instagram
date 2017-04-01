@@ -1,0 +1,43 @@
+<div class="row posts-wrapper">
+  <div class="post text-center">
+    <div class="post-head">
+      <div class="thumb-img">
+        <div class="name">
+          <%= post.user.user_name %>
+        </div>
+      </div>
+    </div>
+    <!--  This was in the post-head and that was causing it to be all funny-->
+    <div class="image center-block">
+      <!-- this is the original image link that Ben used, but it didn't work for me
+      <%= link_to (image_tag post.image.url(:medium), class:'imgresponsive'), post_path(post) %> -->
+      <%= link_to(image_tag(post.image, size: '500x500', class:'imgresponsive'), post_path(post)) %>
+    </div>
+    <div class="post-bottom">
+      <div class="caption">
+        <div class="user-name">
+          <%= post.user.user_name %>
+        </div>
+        <%= post.caption %>
+      </div>
+      <% if post.comments %>
+        <% post.comments.each do |comment| %>
+          <div class="comment">
+            <%= render post.comments, post: post %>
+        <% end %>
+          </div>
+      <div class="comment-like-form row">
+        <div class="like-button col-sm-1">
+          <span class="glyphicon glyphicon-heart-empty">
+          </span>
+        </div>
+        <div class="comment-form col-sm-11">
+          <!--  remote: true is for Javascript to make sure it can load a piece of the page and not the whole thing -->
+          <%= form_for([post, post.comments.new], remote: true) do |f| %>
+            <%= f.text_field :content, placeholder: 'Add a comment...' %>
+          <% end %>
+      </div>
+      <% end %>
+    </div>
+  </div>
+</div>

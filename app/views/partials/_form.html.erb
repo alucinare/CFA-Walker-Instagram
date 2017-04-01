@@ -1,3 +1,5 @@
+<!-- I had "current_user.posts.build" replace @post and it worked to create a post, but it would create two of the same post except when I removed the .build method. Something about how .build is an alias for the new method so it wasn't needed if it's directly in the form code on the view page. However, we would not do this because that is accessing elemnts of data and that is why we have the @post there instead of the fields that we actually want to access. Also, limiting the access of the database to the controller that is directing the info there is important which is why we have the post_params in a private controller.-->
+
 <%= simple_form_for @post, html: { class: 'form-horizontal', multipart: true } do |f| %>
 <div class="form-group">
   <%= f.input :image %>

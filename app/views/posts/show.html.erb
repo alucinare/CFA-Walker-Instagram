@@ -1,35 +1,20 @@
-<div class="row posts-wrapper text-center">
-  <div class="post text-center">
-    <div class="post-head">
-      <div class="name">
-        <!-- SELF CREATED instead of a simply string -->
-        <!-- this simply displays the current_user and not the user to whom the post is associated. -->
-        <!-- <%= current_user.user_name %> -->
-        <!--  this will show the posts associated with the current user-->
-        <%= @post.user.user_name %>
-      </div>
-    </div>
-    <div class="image center-block">
-      <!-- this displays the image and caption through the show method in the PostsController -->
-      <%= image_tag(@post.image, size: '500x500') %>
-    </div>
-    <p class="caption"><%= @post.caption %></p>
-  </div>
+<%= render 'partials/post', post: @post %>
+  <!-- this is taking the id of the post and the user connected to that id and accessing the user_name value and comparing it with the current_user.user_name the latter is a helper
+Walker uses the id of the user instead of the user_name, that might be better as it is definitely unique and probably faster-->
+<div class="text-center">
   <li>
-    <!-- this is taking the id of the post and the user connected to that id and accessing the user_name value and comparing it with the current_user.user_name the latter is a helper
-  Walker uses the id of the user instead of the user_name, that might be better as it is definitely unique and probably faster-->
     <% if @post.user.user_name == current_user.user_name %>
-    <ul>
-      <!-- I'm not entirely sure why the @post is there, perhaps it's a way to make sure it goes to that particular post -->
-      <p><%= link_to "Edit", edit_post_path(@post) %></p>
-    </ul>
-    <ul>
-      <p><%= link_to "Cancel", posts_path %></p>
-    </ul>
-    <% else %>
-    <ul>
-      <p><%= link_to "Cancel", posts_path %></p>
-    </ul>
+      <ul>
+        <!-- I'm not entirely sure why the @post is there, perhaps it's a way to make sure it goes to that particular post -->
+        <p><%= link_to "Edit", edit_post_path(@post) %></p>
+      </ul>
+      <ul>
+        <p><%= link_to "Cancel", posts_path %></p>
+      </ul>
+      <% else %>
+      <ul>
+        <p><%= link_to "Cancel", posts_path %></p>
+      </ul>
     <% end %>
   </li>
 </div>

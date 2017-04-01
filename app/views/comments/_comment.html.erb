@@ -1,0 +1,13 @@
+<div class="user-name">
+  <p>User name: <%= comment.user.user_name %></p>
+</div>
+<div class="comment-content">
+  <p>Content: <%= comment.content %></p>
+</div>
+<!--  makes sure the comment is made by the user currently logged in, if so they can delete-->
+<% if comment.user == current_user %>
+  <%= link_to post_comment_path(post, comment), method: :delete, data: { confirm: "Are you sure?" } do %>
+    <span class="glyphicon glyphicon-remove deletecomment">
+    </span>
+  <% end %>
+<% end %>

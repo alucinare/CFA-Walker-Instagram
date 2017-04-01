@@ -24,6 +24,11 @@ class CommentsController < ApplicationController
       render root_path # I had :new which would reload the new comment page
     end
 
+      respond_to do |format|
+        format.html { redirect_to root_path }
+        format.js
+      end
+
   end
 
   def destroy

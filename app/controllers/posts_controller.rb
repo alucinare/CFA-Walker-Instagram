@@ -23,7 +23,10 @@ class PostsController < ApplicationController
   # This creates a new post with the parameters coming from the post_params method,
   # which is private to this class, then redirects the posts path
   def create
+    # this works when there is only render or redirect_to, there cannot be both.
+    # render plain: params[:post].inspect
 
+    # this accesses the form data in the post_params method which has already prepared it and is returning it to the current_user.posts.build object and assigning it to @post
     @post = current_user.posts.build(post_params)
 
     # OLD @post = Post.create(post_params)
@@ -99,7 +102,7 @@ class PostsController < ApplicationController
   # Be sure to update your create() and update() controller methods.
 
     def post_params
-      # this is saying the params required are in the post model and that image and caption are the fields and that they can be mass migrated to, that is, be changed in the database
+      # this is saying the params required are in the post model and that image and caption are the fields and that they can be mass migrated to, that is, be changed in the database. The params is where the form data is store and sent to the rails application. This method is used to access the form data and what is required for it to be migrated to the database.
       params.require(:post).permit(:image, :caption)
     end
 
