@@ -21,15 +21,7 @@ This is a supplement to what I'm learing at Coder Factory.
 
 ## Installation
 
-Add these lines to your application's Gemfile:
-
-   `gem 'paperclip', '~> 5.0.0'`
-
-   `gem 'simple_form'`
-
-   `gem 'devise'`
-   
-Then execute:
+All the appropriate gems have been added to the applications gem file. Once cloned and in the directory just run:
 
    `$ bundle`
 
