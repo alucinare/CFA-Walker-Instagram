@@ -15,9 +15,9 @@ This is a supplement to what I'm learing at Coder Factory.
 
 - Ruby 2.0 or later.
 - Ruby on Rails 5.0 or later.
-- Devise authentication.
-- Simple Form form generator.
-- Paper Clip file attachment.
+- Devise authentication by plataformatec.
+- Simple Form form generator by plataformatec.
+- Paper Clip file attachment by thoughtbot
 
 ## Installation
 
