@@ -49,4 +49,26 @@ In browser navigate to:
 
 ## Screen shots
 
-![alt tag](
+Trello board
+
+![alt tag](https://github.com/alucinare/CFA-Walker-Instagram/blob/master/images/trello_screen.png)
+
+Login Screen
+
+![alt tag](https://github.com/alucinare/CFA-Walker-Instagram/blob/master/images/login.png)
+
+Logged in
+
+![alt tag](https://github.com/alucinare/CFA-Walker-Instagram/blob/master/images/logged_in.png)
+
+New Post
+
+![alt tag](https://github.com/alucinare/CFA-Walker-Instagram/blob/master/images/new_post.png)
+
+Post comments
+
+![alt tag](https://github.com/alucinare/CFA-Walker-Instagram/blob/master/images/post_comments.png)
+
+Edit Posts
+
+![alt tag](https://github.com/alucinare/CFA-Walker-Instagram/blob/master/images/edit_post.png)
